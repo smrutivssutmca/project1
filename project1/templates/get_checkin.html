@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+    <h1>This is home page</h1>
+
+    {% if user.is_authenticated %}
+        {% for p in post %}
+            <div class="jumbotron">
+        <p>user: {{ p.user }} </p>
+        <p>address: {{ p.address }} </p>
+        <p>longitude: {{ p.longitude }} </p>
+            <p>latitude: {{ p.latitude }} </p>
+            <p>place: {{ p.place_name }} </p>
+            <p>review: {{ p.review }} </p>
+            <a href="/reviewapp/delete_checkin/{{ p.id }}">Delete</a>
+            <a href="/reviewapp/edit_re"/{{ p.id }}>edit</a>
+
+            </div>
+
+
+{% endfor %}
+    {% endif %}
+
+
+
+{% endblock %}

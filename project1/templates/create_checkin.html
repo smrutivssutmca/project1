@@ -66,10 +66,18 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 </head>
 <body>
-<div id="myMap"></div>
-<input id="address" type="text" style="width:600px;"/><br/>
-<input type="text" id="latitude" placeholder="Latitude"/>
-<input type="text" id="longitude" placeholder="Longitude"/>
+<div id="myMap"></div><br/><br/>
+        <form method="post" action="{% url 'save_checkin' %}">
+        {% csrf_token %}
+
+        <input type="text" id="address" name="address" type="text" style="width:600px;"/><br/><br/>
+        <input type="text" id="latitude" name="latitude" placeholder="Latitude" style="width:600px;"/><br/><br/>
+        <input type="text" id="longitude" name="longitude" placeholder="Longitude" style="width:600px;"/><br/><br/>
+        <input type="text" id="place_name" name="place_name" placeholder="Place Name" style="width:600px;"/><br/><br/>
+        <input type="textarea" id="review" name="review" placeholder="Review" style="width:600px;height: 150px;padding: 12px 20px;box-sizing: border-box;resize: none;"/><br><br>
+        <button type="submit">Submit</button>
+    </form>
+
 
 
     {% endif %}

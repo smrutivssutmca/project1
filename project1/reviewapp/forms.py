@@ -1,6 +1,35 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django import forms
 from django.contrib.auth.models import User
+from .models import checkin
+from django.forms import ModelForm
+
+class edit_form(forms.Form):
+    id = forms.CharField(max_length=10)
+    review = forms.CharField(max_length=1000)
+
+    class Meta:
+        model = checkin
+        fields = ['review', ]
+
+class delete_form(forms.Form):
+    id = forms.CharField(max_length=10)
+
+    class Meta:
+        model = checkin
+        fields = []
+
+class checkin_form(ModelForm):
+    address = forms.CharField(max_length=100)
+    longitude = forms.CharField(max_length=50)
+    latitude = forms.CharField(max_length=50)
+    place_name = forms.CharField(max_length=50)
+    review = forms.CharField(max_length=1000)
+    class Meta:
+        model = checkin
+        fields = ['address', 'longitude', 'latitude', 'place_name', 'review', ]
+
+
 
 
 class EditProfileForm(UserChangeForm):
@@ -39,5 +68,7 @@ class SignUpForm(UserCreationForm):
         self.fields['password2'].widget.attrs['class'] = 'form-control'
         self.fields['password2'].widget.attrs['placeholder'] = 'Confirm Password'
         self.fields['password2'].help_text = '<span class="form-text text-muted"><small>Enter the same password as before, for verification.</small></span>'
+
+
 
 
