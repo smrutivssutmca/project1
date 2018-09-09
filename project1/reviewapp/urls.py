@@ -12,6 +12,4 @@ urlpatterns = [
     url(r'^save_checkin$', views.save_checkin, name='save_checkin'),
     url(r'^get_checkin$', views.get_checkin, name='get_checkin'),
     url(r'^delete_checkin/(?P<pk>.*)$', views.delete_checkin, name='delete_checkin'),
-    url(r'^edit_checkin$', views.edit_checkin, name='edit_checkin'),
-    url(r'^edit_re/(?P<pk>.*)$', views.edit_re, name='edit_re'),
 ]
